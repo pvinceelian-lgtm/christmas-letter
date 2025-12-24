@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Letter</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- ANIMATED BACKGROUND ---------- */
+body {
+  min-height: 100vh;
+  font-family: "Georgia", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #b30000, #ffcccc, #006400);
+  background-size: 600% 600%;
+  animation: gradientBG 12s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- CARD ---------- */
+.card {
+  background: #ffffffee;
+  width: 95%;
+  max-width: 750px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- CONTENT LAYOUT ---------- */
+.content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* ---------- PORTRAIT PHOTO (LEFT) ---------- */
+.photo {
+  width: 180px;
+  height: 260px; /* portrait */
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 4px solid #b30000;
+  background: #000;
+}
+
+.photo img,
+.photo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- TEXT ---------- */
+.text h1 {
+  color: #b30000;
+  font-size: 1.8rem;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.footer {
+  margin-top: 15px;
+  font-style: italic;
+  color: #555;
+}
+
+/* ---------- MOBILE STACK ---------- */
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .photo {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+/* ---------- BIGGER SNOW ---------- */
+.snow {
+  position: fixed;
+  top: -20px;
+  color: white;
+  user-select: none;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="content">
+
+    <!-- LEFT PORTRAIT PHOTO / VIDEO -->
+    <div class="photo">
+      <!-- IMAGE -->
+      <img src="ian.JPG">
+
+      <!-- OR VIDEO (uncomment if using video)
+      <video src="your-video.mp4" autoplay muted loop></video>
+      -->
+    </div>
+
+    <!-- TEXT -->
+    <div class="text">
+      <h1>Merry Christmas TWINN</h1> <br>
+
+      <div class="message">
+        Dear twin sofia,<br>
+        This Christmas, gusto ko lang sabihin na sobrang thankful ako na andyan ka.
+        Kahit hindi pa clear ang lahat, ang gaan langng pakiramdam kapag kausap at kasama kita. 
+        Parang mas nagiging warm yung season dahil sayo.
+        <br><br>
+        Salamat sa time, sa effort, at sa pag-stay kahit random usapan lang. 
+        I really appreciate you kung paano ka makinig, umintindi, at magparamdam na andyan ka lagi sa tabi ko.
+        <br><br>
+        Kahit tahimik lang minsan, kahit may late replies, ramdam ko pa rin yung presence mo. 
+        Parang ikaw yung unexpected Christmas gift na dumating nang dahan-dahan pero sakto.
+        <br><br>
+        Wala akong minamadali. Gusto ko lang malaman mo na I’m grateful for you, and I’m happy
+        na ikaw yung twin na nakilala ko this season. I miss you twin, Merry Christmas and Happy New Year!
+
+      </div>
+
+      <div class="footer">
+        With love,<br>
+        Elian
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ---------- SNOW SCRIPT ---------- -->
+<script>
+function createSnowflake() {
+  const snowflake = document.createElement("div");
+  snowflake.classList.add("snow");
+  snowflake.innerHTML = "❄";
+
+  snowflake.style.left = Math.random() * 100 + "vw";
+  snowflake.style.fontSize = Math.random() * 15 + 20 + "px"; // BIGGER
+  snowflake.style.animationDuration = Math.random() * 6 + 6 + "s";
+
+  document.body.appendChild(snowflake);
+
+  setTimeout(() => {
+    snowflake.remove();
+  }, 12000);
+}
+
+setInterval(createSnowflake, 180);
+</script>
+
+</body>
+</html>
